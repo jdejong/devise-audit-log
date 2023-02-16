@@ -36,7 +36,7 @@ module Devise
 
 
       def self.warden_strategy(warden_env)
-        strategy = v.env["omniauth.auth"]["provider"] if warden_env.env["omniauth.auth"]
+        strategy = warden_env.env["omniauth.auth"]["provider"] if warden_env.env["omniauth.auth"]
         strategy ||= warden_env.winning_strategy.class.name.split("::").last.underscore if warden_env.winning_strategy
         strategy ||= "database_authenticatable"
         strategy
